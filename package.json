@@ -1,6 +1,6 @@
 {
   "name": "assure-testing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Assure - A custom testing language (DSL) for browser automation. Test files use .assure extension.",
   "type": "module",
   "main": "dist/runner.js",
@@ -54,4 +54,3 @@
     "typescript": "^5.3.0"
   }
 }
-
