@@ -2,7 +2,7 @@
 
 **Assure** is a custom testing language (DSL) built from scratch with a unique browser automation engine using Chrome DevTools Protocol (CDP).
 
-📚 **[Complete Tutorial →](TUTORIAL.md)** | 🌐 **[Documentation Site →](https://upendra-manike.github.io/assure/)** | 📦 [npm](https://www.npmjs.com/package/assure-testing) | 🐙 [GitHub](https://github.com/upendra-manike/assure)
+📚 **[Complete Tutorial →](TUTORIAL.md)** | 🚀 **[Quick Start Guide →](QUICK_START.md)** | 🌐 **[Documentation Site →](https://upendra-manike.github.io/assure/)** | 📦 [npm](https://www.npmjs.com/package/assure-testing) | 🐙 [GitHub](https://github.com/upendra-manike/assure)
 
 ## ✨ Features
 

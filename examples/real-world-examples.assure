@@ -1,0 +1,256 @@
+# Real-World Test Examples - Copy and modify for your website
+
+# ============================================
+# Example 1: E-commerce Product Search
+# ============================================
+TEST "E-commerce Search"
+
+OPEN "https://shop.example.com"
+WAIT 2
+
+# Search for product
+TYPE "#search-box" "laptop"
+CLICK "#search-button"
+
+# Wait for results
+WAIT 3
+
+# Verify search results
+EXPECT URL CONTAINS "/search"
+EXPECT TEXT ".results-count" CONTAINS "results"
+EXPECT VISIBLE ".product-item"
+
+# ============================================
+# Example 2: User Registration
+# ============================================
+TEST "User Registration"
+
+OPEN "https://app.example.com/register"
+WAIT 2
+
+# Fill registration form
+TYPE "#first-name" "John"
+TYPE "#last-name" "Doe"
+TYPE "#email" "john.doe@example.com"
+TYPE "#password" "SecurePass123!"
+TYPE "#confirm-password" "SecurePass123!"
+
+# Accept terms
+CLICK "#terms-checkbox"
+
+# Submit
+CLICK "#register-button"
+WAIT 5
+
+# Verify success
+EXPECT URL CONTAINS "/dashboard"
+EXPECT TEXT ".welcome" CONTAINS "Welcome"
+
+# ============================================
+# Example 3: Login and Logout
+# ============================================
+TEST "Login and Logout Flow"
+
+# Login
+OPEN "https://app.example.com/login"
+WAIT 2
+TYPE "#email" "user@example.com"
+TYPE "#password" "password123"
+CLICK "#login-button"
+WAIT 3
+
+# Verify logged in
+EXPECT URL CONTAINS "/dashboard"
+EXPECT VISIBLE "#user-menu"
+
+# Logout
+CLICK "#user-menu"
+WAIT 1
+CLICK "#logout-button"
+WAIT 2
+
+# Verify logged out
+EXPECT URL CONTAINS "/login"
+EXPECT TEXT ".message" CONTAINS "logged out"
+
+# ============================================
+# Example 4: Form Validation
+# ============================================
+TEST "Contact Form Validation"
+
+OPEN "https://example.com/contact"
+WAIT 2
+
+# Try to submit empty form
+CLICK "#submit-button"
+WAIT 1
+
+# Verify validation errors
+EXPECT TEXT "#name-error" CONTAINS "required"
+EXPECT TEXT "#email-error" CONTAINS "required"
+
+# Fill form correctly
+TYPE "#name" "John Doe"
+TYPE "#email" "john@example.com"
+TYPE "#message" "Test message"
+CLICK "#submit-button"
+WAIT 2
+
+# Verify success
+EXPECT TEXT ".success" CONTAINS "Thank you"
+
+# ============================================
+# Example 5: Shopping Cart
+# ============================================
+TEST "Add to Cart and Checkout"
+
+# Browse product
+OPEN "https://shop.example.com/products/laptop"
+WAIT 2
+
+# Add to cart
+CLICK "#add-to-cart"
+WAIT 1
+
+# Verify cart updated
+EXPECT TEXT "#cart-count" CONTAINS "1"
+
+# View cart
+CLICK "#cart-icon"
+WAIT 2
+
+# Verify item in cart
+EXPECT TEXT ".cart-item" CONTAINS "Laptop"
+EXPECT VISIBLE ".checkout-button"
+
+# ============================================
+# Example 6: Navigation Menu
+# ============================================
+TEST "Website Navigation"
+
+OPEN "https://example.com"
+WAIT 2
+
+# Test each menu item
+CLICK "a[href='/about']"
+WAIT 2
+EXPECT URL CONTAINS "/about"
+EXPECT TITLE CONTAINS "About"
+
+CLICK "a[href='/services']"
+WAIT 2
+EXPECT URL CONTAINS "/services"
+EXPECT TITLE CONTAINS "Services"
+
+CLICK "a[href='/contact']"
+WAIT 2
+EXPECT URL CONTAINS "/contact"
+EXPECT TITLE CONTAINS "Contact"
+
+# ============================================
+# Example 7: Search and Filter
+# ============================================
+TEST "Search with Filters"
+
+OPEN "https://example.com/products"
+WAIT 2
+
+# Apply filter
+CLICK "#filter-category"
+WAIT 1
+CLICK "#filter-electronics"
+WAIT 2
+
+# Verify filter applied
+EXPECT URL CONTAINS "category=electronics"
+EXPECT TEXT ".filter-active" CONTAINS "Electronics"
+
+# Search within filtered results
+TYPE "#search" "laptop"
+CLICK "#search-button"
+WAIT 3
+
+# Verify results
+EXPECT TEXT ".results" CONTAINS "laptop"
+
+# ============================================
+# Example 8: Multi-Step Form
+# ============================================
+TEST "Multi-Step Registration"
+
+# Step 1: Personal Info
+OPEN "https://app.example.com/signup"
+WAIT 2
+TYPE "#first-name" "John"
+TYPE "#last-name" "Doe"
+CLICK "#next-step-1"
+WAIT 2
+
+# Step 2: Contact Info
+EXPECT URL CONTAINS "/step-2"
+TYPE "#email" "john@example.com"
+TYPE "#phone" "123-456-7890"
+CLICK "#next-step-2"
+WAIT 2
+
+# Step 3: Account Setup
+EXPECT URL CONTAINS "/step-3"
+TYPE "#username" "johndoe"
+TYPE "#password" "SecurePass123!"
+CLICK "#complete"
+WAIT 3
+
+# Verify completion
+EXPECT URL CONTAINS "/welcome"
+EXPECT TEXT ".success" CONTAINS "Welcome"
+
+# ============================================
+# Example 9: Modal/Dialog Interaction
+# ============================================
+TEST "Modal Dialog Test"
+
+OPEN "https://example.com"
+WAIT 2
+
+# Open modal
+CLICK "#open-modal-button"
+WAIT 1
+
+# Verify modal visible
+EXPECT VISIBLE ".modal"
+EXPECT VISIBLE ".modal-content"
+
+# Fill modal form
+TYPE "#modal-input" "Test data"
+CLICK "#modal-submit"
+WAIT 2
+
+# Verify modal closed
+EXPECT TEXT ".result" CONTAINS "Test data"
+
+# ============================================
+# Example 10: API Response Verification
+# ============================================
+TEST "Dynamic Content Loading"
+
+OPEN "https://example.com/dashboard"
+WAIT 2
+
+# Wait for API data to load
+WAIT 5
+
+# Verify dynamic content
+EXPECT VISIBLE ".user-data"
+EXPECT TEXT ".user-name" CONTAINS "John"
+EXPECT TEXT ".user-email" CONTAINS "@example.com"
+
+# ============================================
+# TIPS FOR YOUR TESTS:
+# ============================================
+# 1. Replace selectors (#button, .class) with your actual selectors
+# 2. Replace URLs with your website URLs
+# 3. Adjust wait times based on your website's speed
+# 4. Add more assertions to verify important elements
+# 5. Use comments to explain each step
+# 6. Test one user flow per test file
+
