@@ -45,7 +45,14 @@ function findChromeExecutable(): string {
       if (existsSync(path)) return path;
     }
   } else if (platform === 'linux') {
-    return 'google-chrome' || 'chromium' || 'chromium-browser';
+    // Try common Linux Chrome/Chromium paths
+    const linuxPaths = ['google-chrome', 'chromium', 'chromium-browser'];
+    for (const chromePath of linuxPaths) {
+      // On Linux, we'll try to execute it to see if it exists
+      // For now, return the first one and let spawn handle errors
+      return chromePath;
+    }
+    return 'google-chrome'; // fallback
   } else if (platform === 'win32') {
     const paths = [
       'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
@@ -76,7 +83,7 @@ export async function createBrowser(headless: boolean = true): Promise<BrowserSe
   await setTimeout(2000);
 
   // Connect to Chrome via CDP
-  let client;
+  let client: any;
   let retries = 10;
   
   while (retries > 0) {
@@ -91,6 +98,11 @@ export async function createBrowser(headless: boolean = true): Promise<BrowserSe
       }
       await setTimeout(500);
     }
+  }
+
+  if (!client) {
+    chromeProcess.kill();
+    throw new Error('Failed to connect to Chrome DevTools Protocol');
   }
 
   // Enable required domains

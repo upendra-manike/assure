@@ -15,7 +15,7 @@
     "declarationMap": false,
     "sourceMap": false
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "types/**/*.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
 
