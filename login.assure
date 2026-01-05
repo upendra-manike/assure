@@ -1,0 +1,14 @@
+TEST "User Login Example"
+
+# Navigate to example login page
+OPEN "https://example.com"
+
+# Wait a moment for page to load
+WAIT 2
+
+# Check page title
+EXPECT TITLE CONTAINS "Example"
+
+# Note: This is a demo test file
+# Replace with your actual test scenario
+

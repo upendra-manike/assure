@@ -1,0 +1,23 @@
+# Source files (only dist/ is published)
+*.ts
+!dist/**/*.ts
+
+# Development files
+.vscode/
+.git/
+.gitignore
+*.log
+.DS_Store
+
+# Test files (except examples)
+*.assure
+!examples/*.assure
+
+# Build configuration (not needed in package)
+tsconfig.json
+
+# Development dependencies (already excluded via files field)
+node_modules/
+
+# Documentation files (README.md and LICENSE are included via files field)
+PUBLISH.md
