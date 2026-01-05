@@ -1,0 +1,104 @@
+# Dynamic Elements Test Examples
+# These examples show how Assure handles dynamic elements automatically
+
+TEST "Dynamic Element Loading"
+
+# Open a page with dynamic content
+OPEN "https://example.com"
+WAIT 2
+
+# CLICK automatically waits for element to be visible and clickable
+# No need to manually wait for dynamic elements!
+CLICK "#dynamic-button"
+
+# TYPE automatically waits for input to be ready
+TYPE "#dynamic-input" "Hello World"
+
+# EXPECT automatically waits for elements
+EXPECT VISIBLE "#dynamic-content"
+
+# ============================================
+# Advanced: Explicit Waiting for Dynamic Elements
+# ============================================
+
+TEST "Explicit Dynamic Element Waiting"
+
+OPEN "https://example.com"
+
+# Wait for a specific element to appear (handles React/Vue/Angular)
+WAIT FOR ELEMENT "#react-component"
+
+# Wait for text to appear in an element
+WAIT FOR TEXT "#status-message" "Loading complete"
+
+# Wait for URL to change (after navigation)
+WAIT FOR URL "/dashboard"
+
+# Wait for network to be idle (all AJAX requests complete)
+WAIT FOR NETWORK IDLE
+
+# Now interact with dynamically loaded content
+CLICK "#dynamic-button"
+TYPE "#dynamic-input" "test"
+
+# ============================================
+# Real-World Example: React App
+# ============================================
+
+TEST "React App with Dynamic Content"
+
+OPEN "https://app.example.com"
+WAIT FOR NETWORK IDLE
+
+# Wait for React component to render
+WAIT FOR ELEMENT ".react-component"
+CLICK "#load-data-button"
+
+# Wait for data to load
+WAIT FOR TEXT ".data-status" "Data loaded"
+EXPECT TEXT ".data-list" CONTAINS "Item 1"
+
+# ============================================
+# Real-World Example: Vue.js App
+# ============================================
+
+TEST "Vue.js Dynamic Form"
+
+OPEN "https://app.example.com/form"
+WAIT FOR ELEMENT "#vue-form"
+
+# Form fields load dynamically
+WAIT FOR ELEMENT "#email-input"
+TYPE "#email-input" "test@example.com"
+
+WAIT FOR ELEMENT "#submit-button"
+CLICK "#submit-button"
+
+# Wait for success message
+WAIT FOR TEXT ".success-message" "Form submitted"
+
+# ============================================
+# Real-World Example: AJAX Content
+# ============================================
+
+TEST "AJAX Content Loading"
+
+OPEN "https://example.com"
+CLICK "#load-content-button"
+
+# Wait for AJAX request to complete
+WAIT FOR NETWORK IDLE
+
+# Content is now loaded
+WAIT FOR ELEMENT ".ajax-content"
+EXPECT TEXT ".ajax-content" CONTAINS "Loaded"
+
+# ============================================
+# Tips for Dynamic Elements:
+# ============================================
+# 1. CLICK, TYPE, and EXPECT automatically wait for elements
+# 2. Use WAIT FOR ELEMENT for explicit waiting
+# 3. Use WAIT FOR NETWORK IDLE after actions that trigger AJAX
+# 4. Use WAIT FOR TEXT when waiting for specific content
+# 5. Use WAIT FOR URL when waiting for navigation
+

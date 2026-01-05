@@ -8,6 +8,7 @@ import { executeOpen } from '../commands/open.js';
 import { executeClick } from '../commands/click.js';
 import { executeType } from '../commands/type.js';
 import { executeExpect } from '../commands/expect.js';
+import { executeWaitFor } from '../commands/wait-for.js';
 import { wait } from './browser.js';
 
 export async function execute(commands: Command[], session: BrowserSession): Promise<void> {
@@ -32,12 +33,19 @@ export async function execute(commands: Command[], session: BrowserSession): Pro
           break;
 
         case 'WAIT':
-          const seconds = Number(args[0]);
-          if (isNaN(seconds)) {
-            throw new Error(`WAIT command requires a valid number, got: ${args[0]}`);
+          // Check if it's WAIT FOR (dynamic element waiting)
+          if (args.length > 0 && args[0].toUpperCase() === 'FOR') {
+            await executeWaitFor(session, args.slice(1));
+            console.log(`✓ Line ${lineNumber}: WAIT FOR ${args.slice(1).join(' ')}`);
+          } else {
+            // Regular WAIT command
+            const seconds = Number(args[0]);
+            if (isNaN(seconds)) {
+              throw new Error(`WAIT command requires a valid number, got: ${args[0]}`);
+            }
+            await wait(seconds);
+            console.log(`✓ Line ${lineNumber}: WAIT ${seconds}`);
           }
-          await wait(seconds);
-          console.log(`✓ Line ${lineNumber}: WAIT ${seconds}`);
           break;
 
         case 'EXPECT':

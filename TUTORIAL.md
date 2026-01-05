@@ -200,6 +200,26 @@ WAIT 0.5
 - Wait for animations to complete
 - Wait for API calls to finish
 
+#### WAIT FOR (Dynamic Elements) ⭐ NEW
+
+Wait for dynamic elements and conditions - perfect for React, Vue, Angular apps:
+
+```
+WAIT FOR ELEMENT "#button"
+WAIT FOR TEXT "#status" "Complete"
+WAIT FOR URL "/dashboard"
+WAIT FOR NETWORK IDLE
+```
+
+**Use Cases:**
+- Wait for React/Vue/Angular components to render
+- Wait for AJAX content to load
+- Wait for text to appear dynamically
+- Wait for navigation to complete
+- Wait for all network requests to finish
+
+**Note:** CLICK, TYPE, and EXPECT automatically wait for dynamic elements (up to 10 seconds), but you can use WAIT FOR for explicit control.
+
 ### EXPECT - Assertions
 
 Verifies conditions on the page.
