@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 /**
  * Assure Test Runner
  * Runs .assure test files using custom CDP-based engine
