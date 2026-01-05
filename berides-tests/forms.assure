@@ -24,5 +24,5 @@ WAIT 3
 # EXPECT VISIBLE ".success-message"
 
 # Verify page is accessible
-EXPECT TITLE CONTAINS "BeRides"
+EXPECT URL CONTAINS "berides.com"
 

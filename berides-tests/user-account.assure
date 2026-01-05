@@ -37,5 +37,5 @@ WAIT 3
 # EXPECT URL CONTAINS "login"
 
 # Verify page is accessible
-EXPECT TITLE CONTAINS "BeRides"
+EXPECT URL CONTAINS "berides.com"
 

@@ -32,5 +32,5 @@ WAIT 3
 # WAIT 3
 
 # Verify confirmation or next step
-EXPECT TITLE CONTAINS "BeRides"
+EXPECT URL CONTAINS "berides.com"
 

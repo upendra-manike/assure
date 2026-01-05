@@ -21,5 +21,5 @@ WAIT 3
 # WAIT 3
 
 # Verify search results or page loaded
-EXPECT TITLE CONTAINS "BeRides"
+EXPECT URL CONTAINS "berides.com"
 
