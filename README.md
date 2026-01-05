@@ -2,6 +2,8 @@
 
 **Assure** is a custom testing language (DSL) built from scratch with a unique browser automation engine using Chrome DevTools Protocol (CDP).
 
+📚 **[Complete Tutorial →](TUTORIAL.md)** | 📦 [npm](https://www.npmjs.com/package/assure-testing) | 🐙 [GitHub](https://github.com/upendra-manike/assure)
+
 ## ✨ Features
 
 - 🎯 **Custom Syntax** - Human-readable test commands
@@ -48,7 +50,7 @@ npm install --save-dev assure-testing
 ### Install from source
 
 ```bash
-git clone https://github.com/yourusername/assure.git
+git clone https://github.com/upendra-manike/assure.git
 cd assure
 npm install
 npm run build
