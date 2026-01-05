@@ -1,0 +1,198 @@
+# OTP Validation Examples
+# Assure supports multiple ways to handle OTP (One-Time Password) validation
+
+# ============================================
+# Example 1: Manual OTP Entry
+# ============================================
+TEST "Manual OTP Entry"
+
+OPEN "https://app.example.com/login"
+WAIT 2
+
+# Enter credentials
+TYPE "#email" "user@example.com"
+TYPE "#password" "password123"
+CLICK "#login-button"
+
+# Wait for OTP page
+WAIT FOR ELEMENT "#otp-input"
+WAIT 2
+
+# Enter OTP manually
+OTP MANUAL "123456" "#otp-input"
+
+# Submit OTP
+CLICK "#verify-button"
+WAIT 3
+
+# Verify successful login
+EXPECT URL CONTAINS "/dashboard"
+
+# ============================================
+# Example 2: OTP from Clipboard
+# ============================================
+TEST "OTP from Clipboard"
+
+OPEN "https://app.example.com/login"
+TYPE "#email" "user@example.com"
+TYPE "#password" "password123"
+CLICK "#login-button"
+
+# Wait for OTP input
+WAIT FOR ELEMENT "#otp-input"
+
+# Copy OTP to clipboard first (manually or via script)
+# Then use:
+OTP FROM CLIPBOARD "#otp-input"
+
+# Submit
+CLICK "#verify-button"
+WAIT 3
+EXPECT URL CONTAINS "/dashboard"
+
+# ============================================
+# Example 3: OTP from File
+# ============================================
+TEST "OTP from File"
+
+OPEN "https://app.example.com/login"
+TYPE "#email" "user@example.com"
+TYPE "#password" "password123"
+CLICK "#login-button"
+
+# Wait for OTP input
+WAIT FOR ELEMENT "#otp-input"
+
+# Read OTP from file (file contains the OTP code)
+OTP FROM FILE "otp.txt" "#otp-input"
+
+# Submit
+CLICK "#verify-button"
+WAIT 3
+EXPECT URL CONTAINS "/dashboard"
+
+# ============================================
+# Example 4: Complete Registration Flow with OTP
+# ============================================
+TEST "Registration with OTP Verification"
+
+# Step 1: Fill registration form
+OPEN "https://app.example.com/register"
+WAIT 2
+
+TYPE "#name" "John Doe"
+TYPE "#email" "john@example.com"
+TYPE "#phone" "+1234567890"
+TYPE "#password" "SecurePass123!"
+CLICK "#register-button"
+
+# Step 2: Wait for OTP page
+WAIT FOR ELEMENT "#otp-input"
+WAIT FOR TEXT ".message" "OTP sent"
+
+# Step 3: Enter OTP (from file or clipboard)
+OTP FROM FILE "otp.txt" "#otp-input"
+
+# Step 4: Verify OTP
+CLICK "#verify-otp-button"
+WAIT 3
+
+# Step 5: Verify registration success
+EXPECT URL CONTAINS "/welcome"
+EXPECT TEXT ".success" CONTAINS "verified"
+
+# ============================================
+# Example 5: Two-Factor Authentication (2FA)
+# ============================================
+TEST "2FA Login Flow"
+
+# Step 1: Login
+OPEN "https://app.example.com/login"
+TYPE "#email" "user@example.com"
+TYPE "#password" "password123"
+CLICK "#login-button"
+
+# Step 2: Wait for 2FA OTP
+WAIT FOR ELEMENT "#otp-code"
+WAIT FOR TEXT ".instruction" "Enter verification code"
+
+# Step 3: Enter 2FA OTP
+OTP FROM CLIPBOARD "#otp-code"
+
+# Step 4: Verify
+CLICK "#verify-2fa"
+WAIT 3
+
+# Step 5: Verify logged in
+EXPECT URL CONTAINS "/dashboard"
+EXPECT VISIBLE "#user-menu"
+
+# ============================================
+# Example 6: Password Reset with OTP
+# ============================================
+TEST "Password Reset OTP Flow"
+
+# Step 1: Request password reset
+OPEN "https://app.example.com/forgot-password"
+TYPE "#email" "user@example.com"
+CLICK "#send-reset-code"
+WAIT 2
+
+# Step 2: Wait for OTP input
+WAIT FOR ELEMENT "#reset-otp"
+WAIT FOR TEXT ".message" "code sent"
+
+# Step 3: Enter OTP
+OTP MANUAL "654321" "#reset-otp"
+
+# Step 4: Verify OTP
+CLICK "#verify-reset-code"
+WAIT 2
+
+# Step 5: Set new password
+WAIT FOR ELEMENT "#new-password"
+TYPE "#new-password" "NewSecurePass123!"
+TYPE "#confirm-password" "NewSecurePass123!"
+CLICK "#reset-password"
+WAIT 3
+
+# Step 6: Verify success
+EXPECT TEXT ".success" CONTAINS "Password reset"
+
+# ============================================
+# Example 7: Phone Number Verification
+# ============================================
+TEST "Phone Verification with SMS OTP"
+
+OPEN "https://app.example.com/verify-phone"
+WAIT 2
+
+# Enter phone number
+TYPE "#phone" "+1234567890"
+CLICK "#send-sms-code"
+WAIT 2
+
+# Wait for OTP input
+WAIT FOR ELEMENT "#sms-otp"
+WAIT FOR TEXT ".status" "SMS sent"
+
+# Enter OTP from clipboard (after receiving SMS)
+OTP FROM CLIPBOARD "#sms-otp"
+
+# Verify
+CLICK "#verify-phone"
+WAIT 3
+
+# Verify success
+EXPECT TEXT ".verified" CONTAINS "Phone verified"
+
+# ============================================
+# Tips for OTP Testing:
+# ============================================
+# 1. OTP MANUAL - Use for hardcoded test OTPs
+# 2. OTP FROM CLIPBOARD - Copy OTP manually, then use this
+# 3. OTP FROM FILE - Store OTP in a file, read it automatically
+# 4. Always wait for OTP input field before entering OTP
+# 5. Use WAIT FOR ELEMENT for OTP input field
+# 6. Verify OTP submission with EXPECT commands
+

@@ -9,6 +9,7 @@ import { executeClick } from '../commands/click.js';
 import { executeType } from '../commands/type.js';
 import { executeExpect } from '../commands/expect.js';
 import { executeWaitFor } from '../commands/wait-for.js';
+import { executeOTP } from '../commands/otp.js';
 import { wait } from './browser.js';
 
 export async function execute(commands: Command[], session: BrowserSession): Promise<void> {
@@ -51,6 +52,11 @@ export async function execute(commands: Command[], session: BrowserSession): Pro
         case 'EXPECT':
           await executeExpect(session, args);
           console.log(`✓ Line ${lineNumber}: EXPECT ${args.join(' ')}`);
+          break;
+
+        case 'OTP':
+          await executeOTP(session, args);
+          console.log(`✓ Line ${lineNumber}: OTP ${args.join(' ')}`);
           break;
 
         case 'TEST':

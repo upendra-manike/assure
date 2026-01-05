@@ -232,6 +232,9 @@ session = await createBrowser(false); // visible browser
 | `EXPECT URL` | Assert URL | `EXPECT URL CONTAINS "/home"` |
 | `EXPECT TEXT` | Assert text | `EXPECT TEXT "#el" CONTAINS "text"` |
 | `EXPECT VISIBLE` | Assert visibility | `EXPECT VISIBLE "#modal"` |
+| `OTP MANUAL` | Enter OTP manually | `OTP MANUAL "123456" "#otp-input"` |
+| `OTP FROM FILE` | Read OTP from file | `OTP FROM FILE "otp.txt" "#otp-input"` |
+| `OTP FROM CLIPBOARD` | Read OTP from clipboard | `OTP FROM CLIPBOARD "#otp-input"` |
 | `TEST` | Test label | `TEST "My Test"` |
 
 ## 🚧 Future Enhancements
