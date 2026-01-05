@@ -1,0 +1,11 @@
+TEST "Simple Google Test"
+
+# Open Google homepage
+OPEN "https://www.google.com"
+
+# Wait for page to load
+WAIT 2
+
+# Verify we're on Google
+EXPECT TITLE CONTAINS "Google"
+

@@ -1,0 +1,43 @@
+# Tutorial Examples - Copy and modify these for your tests
+
+# Example 1: Simple Page Visit
+TEST "Visit Google"
+
+OPEN "https://www.google.com"
+WAIT 2
+EXPECT TITLE CONTAINS "Google"
+
+# Example 2: Search Test
+TEST "Google Search"
+
+OPEN "https://www.google.com"
+WAIT 2
+TYPE "input[name='q']" "Assure Testing"
+CLICK "input[type='submit']"
+WAIT 3
+EXPECT TITLE CONTAINS "Assure"
+
+# Example 3: Form Fill
+TEST "Contact Form"
+
+OPEN "https://example.com/contact"
+WAIT 2
+TYPE "#name" "John Doe"
+TYPE "#email" "john@example.com"
+TYPE "#message" "Hello World"
+CLICK "#submit"
+WAIT 3
+EXPECT TEXT ".success" CONTAINS "Thank you"
+
+# Example 4: Navigation
+TEST "Website Navigation"
+
+OPEN "https://example.com"
+WAIT 2
+CLICK "a[href='/about']"
+WAIT 2
+EXPECT URL CONTAINS "/about"
+CLICK "a[href='/contact']"
+WAIT 2
+EXPECT URL CONTAINS "/contact"
+
