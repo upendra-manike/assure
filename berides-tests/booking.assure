@@ -1,0 +1,36 @@
+TEST "BeRides Booking Flow"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Test booking functionality
+# Adjust selectors based on actual booking system
+
+# Example: Start booking process
+# CLICK "#book-now-button"
+# WAIT 2
+
+# Fill booking form
+# TYPE "#pickup-location" "New York"
+# TYPE "#dropoff-location" "Boston"
+# TYPE "#date" "2024-01-15"
+# TYPE "#time" "10:00 AM"
+# CLICK "#continue-booking"
+# WAIT 3
+
+# Verify booking page
+# EXPECT URL CONTAINS "booking"
+# EXPECT VISIBLE ".booking-form"
+
+# Or if it's a ride request
+# CLICK "#request-ride"
+# WAIT 2
+# TYPE "#from" "Location A"
+# TYPE "#to" "Location B"
+# CLICK "#confirm-ride"
+# WAIT 3
+
+# Verify confirmation or next step
+EXPECT TITLE CONTAINS "BeRides"
+

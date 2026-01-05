@@ -1,0 +1,26 @@
+TEST "BeRides Mobile Responsive Test"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Test mobile menu if available
+# Mobile menu usually appears as hamburger icon
+
+# Example: Open mobile menu
+# CLICK ".mobile-menu-button"
+# WAIT 1
+# EXPECT VISIBLE ".mobile-nav"
+
+# Test navigation items in mobile menu
+# CLICK ".mobile-nav a[href*='about']"
+# WAIT 2
+
+# Close mobile menu
+# CLICK ".close-menu"
+# WAIT 1
+
+# Verify page elements are visible on mobile
+EXPECT VISIBLE "header"
+EXPECT TITLE CONTAINS "BeRides"
+

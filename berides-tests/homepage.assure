@@ -1,0 +1,18 @@
+TEST "BeRides Homepage Test"
+
+# Open BeRides homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Verify page loaded
+EXPECT TITLE CONTAINS "BeRides"
+EXPECT URL CONTAINS "berides.com"
+
+# Verify key elements are visible
+EXPECT VISIBLE "header"
+EXPECT VISIBLE "nav"
+
+# Check for main content
+WAIT 2
+EXPECT VISIBLE "main"
+

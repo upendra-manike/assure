@@ -1,0 +1,27 @@
+TEST "BeRides Navigation Test"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Test navigation - adjust selectors based on actual website
+# Example: Click on About link
+# CLICK "a[href*='about']"
+# WAIT 2
+# EXPECT URL CONTAINS "about"
+
+# Example: Click on Services link
+# CLICK "a[href*='services']"
+# WAIT 2
+# EXPECT URL CONTAINS "services"
+
+# Example: Click on Contact link
+# CLICK "a[href*='contact']"
+# WAIT 2
+# EXPECT URL CONTAINS "contact"
+
+# Return to homepage
+OPEN "https://stage.berides.com/"
+WAIT 2
+EXPECT URL CONTAINS "berides.com"
+

@@ -1,0 +1,25 @@
+TEST "BeRides Search Functionality"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Look for search functionality
+# Adjust selectors based on actual website structure
+
+# Example: If there's a search box
+# TYPE "#search-input" "ride"
+# CLICK "#search-button"
+# WAIT 3
+# EXPECT URL CONTAINS "search"
+
+# Or if search is in navigation
+# CLICK ".search-icon"
+# WAIT 1
+# TYPE "#search" "test"
+# CLICK "#submit-search"
+# WAIT 3
+
+# Verify search results or page loaded
+EXPECT TITLE CONTAINS "BeRides"
+

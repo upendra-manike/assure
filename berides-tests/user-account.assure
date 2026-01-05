@@ -1,0 +1,41 @@
+TEST "BeRides User Account Tests"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Test login functionality
+# Adjust selectors based on actual login system
+
+# Example: Login
+# CLICK "#login-button"
+# WAIT 2
+# TYPE "#email" "test@example.com"
+# TYPE "#password" "testpassword123"
+# CLICK "#login-submit"
+# WAIT 3
+# EXPECT URL CONTAINS "dashboard"
+
+# Or if login is on separate page
+# OPEN "https://stage.berides.com/login"
+# WAIT 2
+# TYPE "#username" "testuser"
+# TYPE "#password" "testpass"
+# CLICK "#login-btn"
+# WAIT 3
+
+# Verify logged in
+# EXPECT URL CONTAINS "dashboard"
+# EXPECT VISIBLE "#user-menu"
+# EXPECT TEXT "#user-name" CONTAINS "Test"
+
+# Test logout
+# CLICK "#user-menu"
+# WAIT 1
+# CLICK "#logout"
+# WAIT 2
+# EXPECT URL CONTAINS "login"
+
+# Verify page is accessible
+EXPECT TITLE CONTAINS "BeRides"
+

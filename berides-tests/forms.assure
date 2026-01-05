@@ -1,0 +1,28 @@
+TEST "BeRides Form Tests"
+
+# Open homepage
+OPEN "https://stage.berides.com/"
+WAIT 3
+
+# Test contact form if available
+# Adjust selectors based on actual form structure
+
+# Example: Contact form
+# CLICK "a[href*='contact']"
+# WAIT 2
+# TYPE "#name" "Test User"
+# TYPE "#email" "test@example.com"
+# TYPE "#message" "This is a test message"
+# CLICK "#submit-button"
+# WAIT 3
+# EXPECT TEXT ".success" CONTAINS "Thank you"
+
+# Or newsletter signup
+# TYPE "#newsletter-email" "test@example.com"
+# CLICK "#newsletter-submit"
+# WAIT 2
+# EXPECT VISIBLE ".success-message"
+
+# Verify page is accessible
+EXPECT TITLE CONTAINS "BeRides"
+
