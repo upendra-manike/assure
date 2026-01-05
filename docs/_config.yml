@@ -1,9 +1,0 @@
-# Jekyll configuration (optional, but helps if Jekyll is enabled)
-theme: jekyll-theme-primer
-plugins:
-  - jekyll-relative-links
-  - jekyll-readme-index
-
-# Disable Jekyll processing for static site
-safe: true
-
